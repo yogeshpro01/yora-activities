@@ -1,125 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Radz's 25th Birthday Dinner</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet" />
-<style>
-  body {
-    margin: 0;
-    background: #faf7f5;
-    font-family: 'Montserrat', sans-serif;
-    color: #4a3c3c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2rem;
-  }
-  .invite-card {
-    background: white;
-    max-width: 480px;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    padding: 3rem 2.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .invite-card::before {
-    content: "";
-    position: absolute;
-    top: -30px; right: -30px;
-    width: 150px; height: 150px;
-    background: rgba(255, 192, 203, 0.15);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: pulse 6s ease-in-out infinite;
-  }
-  .invite-card::after {
-    content: "";
-    position: absolute;
-    bottom: -40px; left: -40px;
-    width: 180px; height: 180px;
-    background: rgba(144, 238, 144, 0.15);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: pulse 5s ease-in-out infinite reverse;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1);}
-    50% { transform: scale(1.1);}
-  }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    margin-bottom: 0.2rem;
-    color: #b33951; /* deep pink-red */
-  }
-  h2 {
-    font-weight: 400;
-    font-size: 1.3rem;
-    color: #3a5a40; /* olive green */
-    margin-bottom: 2rem;
-    font-style: italic;
-  }
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    color: #6b5b5b;
-  }
-  .details {
-    border: 1px solid #b33951;
-    border-radius: 10px;
-    padding: 1rem 1.5rem;
-    margin-bottom: 2rem;
-    font-weight: 600;
-    color: #b33951;
-  }
-  .rsvp-btn {
-    background-color: #b33951;
-    color: white;
-    border: none;
-    padding: 0.85rem 3rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 25px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-  }
-  .rsvp-btn:hover {
-    background-color: #8a2b3a;
-  }
-  footer {
-    margin-top: 3rem;
-    font-size: 0.85rem;
-    color: #999;
-    font-style: italic;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radhika's 25th Birthday Party</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fffaf6;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #4a5d30;
+      margin: 0.5rem 0;
+    }
+    h2 {
+      font-size: 2.5rem;
+      color: #d95d5d;
+      margin: 0.5rem 0 2rem;
+    }
+    .details {
+      font-size: 1.1rem;
+      color: #6b4f2d;
+      margin: 1.5rem 0;
+    }
+    .rsvp {
+      font-size: 1rem;
+      color: #3b5d3a;
+      margin-top: 2rem;
+    }
+    .icons {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .icons span {
+      font-size: 2.5rem;
+    }
+    .cake {
+      font-size: 3rem;
+      margin-top: 1rem;
+      color: #2b4a9e;
+    }
+  </style>
 </head>
 <body>
-  <div class="invite-card">
-    <h1>Radz's 25th</h1>
-    <h2>A Chic Birthday Dinner</h2>
-    <p>
-      Join us for an elegant evening of fine dining and celebration as Radz turns 25.
-      Dress in your finest pinks, reds, greens, or whites and get ready for a night to remember.
-    </p>
-    <div class="details">
-      📍 Venue: Your Venue Name Here<br />
-      📅 Date: September 28, 2025<br />
-      🕕 Time: 6:00 PM – Until late
+  <div class="container">
+    <p style="color:#0047ab; font-weight:bold;">YOU ARE INVITED TO</p>
+    <h1>Radhika's 25th</h1>
+    <h2>Birthday Party</h2>
+
+    <div class="icons">
+      <span>🥂</span>
+      <span>🍴</span>
+      <span>🕯️</span>
     </div>
-    <a class="rsvp-btn" href="mailto:youremail@example.com?subject=RSVP for Radz's 25th">RSVP Now</a>
-    <footer>
-      Designed with love & style 💖
-    </footer>
+
+    <div class="details">
+      <p><strong>Saturday, July 14, 2025</strong></p>
+      <p>Dinner at 7PM</p>
+      <p>Café Oro di Napoli</p>
+    </div>
+
+    <div class="cake">🎂</div>
+
+    <div class="rsvp">
+      <p>RSVP by June 30 to Kim</p>
+      <p>📞 +123-456-7890</p>
+    </div>
   </div>
 </body>
 </html>
