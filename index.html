@@ -12,9 +12,33 @@
       padding: 0;
       text-align: center;
       color: #333;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="none" stroke="%236b4f2d" stroke-width="2"><path d="M50 350 q25-50 50 0 t50 0"/><circle cx="300" cy="80" r="30" stroke="%230047ab" stroke-width="3" fill="none"/><path d="M320 250 l40 80 l-80 0 z" stroke="%23d95d5d" stroke-width="3" fill="none"/><rect x="30" y="30" width="40" height="60" stroke="%234a5d30" stroke-width="3" fill="none"/></svg>');
-      background-repeat: repeat;
-      background-size: 200px 200px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" fill="none" stroke-width="3"> 
+        <!-- Wine Glass (blue, left side) -->
+        <path d="M80 100 q30 30 60 0 v40 a30 30 0 1 1 -60 0 z" stroke="%230047ab" fill="none"/>
+        <line x1="110" y1="140" x2="110" y2="190" stroke="%230047ab"/>
+        <line x1="90" y1="190" x2="130" y2="190" stroke="%230047ab"/>
+
+        <!-- Candle (green, right side) -->
+        <rect x="480" y="100" width="20" height="80" stroke="%234a5d30" fill="none"/>
+        <path d="M490 70 q10 15 0 30 q-10 -15 0 -30" stroke="%23d95d5d" fill="none"/>
+
+        <!-- Cake (blue, bottom right) -->
+        <ellipse cx="450" cy="500" rx="80" ry="20" stroke="%232b4a9e" fill="none"/>
+        <rect x="370" y="460" width="160" height="40" stroke="%232b4a9e" fill="none"/>
+        <path d="M390 460 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0" stroke="%232b4a9e" fill="none"/>
+
+        <!-- Fork & Spoon (brown, top right) -->
+        <line x1="520" y1="250" x2="520" y2="320" stroke="%236b4f2d"/>
+        <line x1="530" y1="250" x2="530" y2="320" stroke="%236b4f2d"/>
+        <circle cx="525" cy="240" r="10" stroke="%236b4f2d" fill="none"/>
+        <path d="M545 240 q15 -10 15 10 v70" stroke="%236b4f2d" fill="none"/>
+
+        <!-- Plate (brown, bottom left) -->
+        <ellipse cx="120" cy="500" rx="70" ry="20" stroke="%236b4f2d" fill="none"/>
+      </svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
     }
     .container {
       max-width: 600px;
@@ -24,24 +48,44 @@
       border-radius: 16px;
     }
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #4a5d30;
       margin: 0.5rem 0;
     }
     h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: #d95d5d;
-      margin: 0.5rem 0 2rem;
+      margin: 0.5rem 0 1.5rem;
     }
     .details {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #6b4f2d;
       margin: 1.5rem 0;
     }
     .rsvp {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #3b5d3a;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Mobile Friendly Adjustments */
+    @media (max-width: 600px) {
+      .container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+      .details {
+        font-size: 0.95rem;
+      }
+      .rsvp {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
