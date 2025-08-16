@@ -1,147 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Radhika's 25th Birthday Party</title>
-  <style>
-    :root{
-      --ink-green:#4a5d30;
-      --ink-blue:#2b4a9e;
-      --ink-brown:#6b4f2d;
-      --ink-red:#d95d5d;
-      --paper:#fffaf6;
-    }
-    *{box-sizing:border-box;}
-    body{
-      font-family: Georgia, serif;
-      background: var(--paper);
-      margin:0; padding:0; color:#333; text-align:center;
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Radhika's 25th Birthday Party</title>
+<style>
+:root{
+  --green:#4a5d30; --blue:#2b4a9e; --brown:#6b4f2d; --red:#d95d5d;
+  --paper:#fffaf6;
+}
+*{box-sizing:border-box;}
+body{
+  font-family: Georgia, serif;
+  background: var(--paper);
+  margin:0; padding:0; color:#333; text-align:center;
+  min-height:100vh; overflow-x:hidden;
+}
 
-    .container{
-      position:relative; z-index:1;
-      max-width:640px; margin:0 auto; padding:2rem;
-      background: rgba(255,250,246,.96);
-      border-radius:16px;
-    }
-    p.lead{color:#0047ab;font-weight:bold;letter-spacing:.08em;margin:.25rem 0 .5rem;}
-    h1{font-size:2.6rem;color:var(--ink-green);margin:.25rem 0;}
-    h2{font-size:2rem;color:var(--ink-red);margin:0 0 1.25rem;}
-    .details{font-size:1rem;color:var(--ink-brown);margin:1.25rem 0 0;}
-    .details p{margin:.35rem 0;}
-    .rsvp{font-size:.95rem;color:#3b5d3a;margin-top:1rem;}
+/* Invitation container */
+.container{
+  position:relative; z-index:1;
+  max-width:640px; margin:0 auto; padding:2rem;
+  background: rgba(255,250,246,.96);
+  border-radius:16px;
+}
+p.lead{color:#0047ab;font-weight:bold;letter-spacing:.08em;margin:.25rem 0 .5rem;}
+h1{font-size:2.6rem;color:var(--green);margin:.25rem 0;}
+h2{font-size:2rem;color:var(--red);margin:0 0 1.25rem;}
+.details{font-size:1rem;color:var(--brown);margin:1.25rem 0 0;}
+.details p{margin:.35rem 0;}
+.rsvp{font-size:.95rem;color:#3b5d3a;margin-top:1rem;}
 
-    /* Mobile tweaks */
-    @media (max-width:600px){
-      .container{margin:1rem;padding:1.25rem;}
-      h1{font-size:2.1rem;}
-      h2{font-size:1.5rem;}
-      .details{font-size:.95rem;}
-    }
+/* Mobile tweaks */
+@media (max-width:600px){
+  .container{margin:1rem;padding:1.25rem;}
+  h1{font-size:2.1rem;} h2{font-size:1.5rem;} .details{font-size:.95rem;}
+}
 
-    /* --- Animated Doodles --- */
-    .doodles {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    }
-    .doodles svg { position:absolute; transform-origin:center; }
+/* --- Hand-drawn Doodles --- */
+.doodles{position:fixed; inset:0; pointer-events:none; z-index:0;}
 
-    /* Positions & animation */
-    .wine { left: 5%; top: 45%; width:60px; height:120px; animation: float 3s ease-in-out infinite alternate; }
-    .cutlery { right: 5%; top: 15%; width:80px; height:120px; animation: sway 4s ease-in-out infinite alternate; }
-    .cake { right: 10%; bottom: 10%; width:120px; height:80px; animation: float 5s ease-in-out infinite alternate; }
-    .balloon.red { left: 20%; top: 20%; width:60px; height:100px; animation: float 4s ease-in-out infinite alternate; }
-    .balloon.blue { left: 35%; top: 25%; width:60px; height:100px; animation: float 5s ease-in-out infinite alternate; }
+/* Base styles for SVG doodles */
+.doodles svg{position:absolute; transform-origin:center;}
 
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(-3deg);}
-      50% { transform: translateY(-15px) rotate(3deg);}
-      100% { transform: translateY(0px) rotate(-3deg);}
-    }
-    @keyframes sway {
-      0% { transform: rotate(0deg);}
-      50% { transform: rotate(8deg);}
-      100% { transform: rotate(0deg);}
-    }
+/* Floating animations */
+@keyframes float {0%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-15px) rotate(3deg);}100%{transform:translateY(0) rotate(-3deg);}}
+@keyframes sway {0%{transform:rotate(0deg);}50%{transform:rotate(8deg);}100%{transform:rotate(0deg);}}
+@keyframes flicker {0%{opacity:0.7;}50%{opacity:1;}100%{opacity:0.7;}}
+@keyframes confetti-fall {0%{top:-10%;}100%{top:100%;}}
 
-    /* Confetti */
-    .confetti {
-      position:absolute; width:100%; height:100%;
-      background-image: radial-gradient(#d95d5d 2px, transparent 2px),
-                        radial-gradient(#2b4a9e 2px, transparent 2px),
-                        radial-gradient(#4a5d30 2px, transparent 2px);
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 5px, 5px 15px;
-      animation: confetti-fall 3s linear infinite;
-    }
-    @keyframes confetti-fall {
-      0% { background-position: 0 -20px, 10px -20px, 5px -20px; }
-      100% { background-position: 0 100vh, 10px 100vh, 5px 100vh; }
-    }
+/* Doodle positions */
+.cake { right:10%; bottom:5%; width:140px; height:100px; animation: float 5s ease-in-out infinite alternate;}
+.wine { left:5%; bottom:15%; width:60px; height:120px; animation: float 4s ease-in-out infinite alternate;}
+.cutlery { right:5%; bottom:25%; width:80px; height:120px; animation: sway 4s ease-in-out infinite alternate;}
+.balloon.red { left:20%; top:10%; width:60px; height:100px; animation: float 4s ease-in-out infinite alternate;}
+.balloon.blue { left:35%; top:15%; width:60px; height:100px; animation: float 5s ease-in-out infinite alternate;}
+.party-hat { left:50%; top:0; width:50px; height:50px; animation: float 6s ease-in-out infinite alternate;}
 
-    /* Mobile scaling for doodles */
-    @media (max-width:600px){
-      .wine, .cutlery, .cake, .balloon { transform: scale(0.7); }
-    }
-  </style>
+/* Confetti styles */
+.confetti-piece{
+  position:absolute; width:8px; height:8px; border-radius:50%;
+  animation: confetti-fall linear infinite;
+}
+.confetti-piece:nth-child(1){background:#d95d5d; left:10%; animation-duration:3s;}
+.confetti-piece:nth-child(2){background:#2b4a9e; left:30%; animation-duration:4s;}
+.confetti-piece:nth-child(3){background:#4a5d30; left:50%; animation-duration:5s;}
+.confetti-piece:nth-child(4){background:#f4d03f; left:70%; animation-duration:3.5s;}
+.confetti-piece:nth-child(5){background:#e67e22; left:85%; animation-duration:4.5s;}
+
+/* Mobile scaling */
+@media (max-width:600px){
+  .cake, .wine, .cutlery, .balloon, .party-hat{transform:scale(0.7);}
+}
+</style>
 </head>
 <body>
-  <!-- Animated Doodles -->
-  <div class="doodles" aria-hidden="true">
-    <!-- Wine glass -->
-    <svg class="wine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 120">
-      <path d="M30 20 q15 20 0 40 q-15-20 0-40" fill="none" stroke="#2b4a9e" stroke-width="4" stroke-linecap="round"/>
-      <line x1="30" y1="60" x2="30" y2="100" stroke="#2b4a9e" stroke-width="3"/>
-      <ellipse cx="30" cy="105" rx="10" ry="3" fill="#2b4a9e"/>
-    </svg>
 
-    <!-- Fork & Knife -->
-    <svg class="cutlery" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 120">
-      <line x1="20" y1="10" x2="20" y2="70" stroke="#6b4f2d" stroke-width="4"/>
-      <line x1="14" y1="10" x2="14" y2="40" stroke="#6b4f2d" stroke-width="2"/>
-      <line x1="26" y1="10" x2="26" y2="40" stroke="#6b4f2d" stroke-width="2"/>
-      <line x1="60" y1="10" x2="60" y2="70" stroke="#6b4f2d" stroke-width="4"/>
-      <path d="M50 10 L70 20 L50 30" fill="none" stroke="#6b4f2d" stroke-width="3"/>
-    </svg>
+<!-- Animated doodles -->
+<div class="doodles" aria-hidden="true">
 
-    <!-- Cake -->
-    <svg class="cake" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80">
-      <rect x="10" y="40" width="100" height="30" fill="none" stroke="#2b4a9e" stroke-width="4" rx="5"/>
-      <path d="M30 40 q20 -20 60 0" fill="none" stroke="#d95d5d" stroke-width="4"/>
-      <line x1="60" y1="20" x2="60" y2="40" stroke="#d95d5d" stroke-width="3"/>
-    </svg>
+  <!-- Cake with flickering candle -->
+  <svg class="cake" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 100">
+    <rect x="10" y="40" width="120" height="50" rx="8" fill="none" stroke="#2b4a9e" stroke-width="4"/>
+    <path d="M30 40 q25 -25 80 0" fill="none" stroke="#d95d5d" stroke-width="4"/>
+    <line x1="70" y1="15" x2="70" y2="40" stroke="#d95d5d" stroke-width="4" style="animation:flicker 1s infinite alternate;"/>
+  </svg>
 
-    <!-- Balloons -->
-    <svg class="balloon red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100">
-      <ellipse cx="30" cy="40" rx="20" ry="30" fill="#d95d5d" stroke="#b33a3a" stroke-width="3"/>
-      <line x1="30" y1="70" x2="30" y2="100" stroke="#b33a3a" stroke-width="2"/>
-    </svg>
-    <svg class="balloon blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100">
-      <ellipse cx="30" cy="40" rx="18" ry="28" fill="#2b4a9e" stroke="#1f3475" stroke-width="3"/>
-      <line x1="30" y1="68" x2="30" y2="100" stroke="#1f3475" stroke-width="2"/>
-    </svg>
+  <!-- Wine glass -->
+  <svg class="wine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 120">
+    <path d="M30 20 q15 20 0 40 q-15-20 0-40" fill="none" stroke="#2b4a9e" stroke-width="4" stroke-linecap="round"/>
+    <line x1="30" y1="60" x2="30" y2="100" stroke="#2b4a9e" stroke-width="3"/>
+    <ellipse cx="30" cy="105" rx="10" ry="3" fill="#2b4a9e"/>
+  </svg>
 
-    <!-- Confetti -->
-    <div class="confetti"></div>
+  <!-- Fork & Knife -->
+  <svg class="cutlery" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 120">
+    <line x1="20" y1="10" x2="20" y2="70" stroke="#6b4f2d" stroke-width="4"/>
+    <line x1="14" y1="10" x2="14" y2="40" stroke="#6b4f2d" stroke-width="2"/>
+    <line x1="26" y1="10" x2="26" y2="40" stroke="#6b4f2d" stroke-width="2"/>
+    <line x1="60" y1="10" x2="60" y2="70" stroke="#6b4f2d" stroke-width="4"/>
+    <path d="M50 10 L70 20 L50 30" fill="none" stroke="#6b4f2d" stroke-width="3"/>
+  </svg>
+
+  <!-- Balloons -->
+  <svg class="balloon red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100">
+    <ellipse cx="30" cy="40" rx="20" ry="30" fill="#d95d5d" stroke="#b33a3a" stroke-width="3"/>
+    <line x1="30" y1="70" x2="30" y2="100" stroke="#b33a3a" stroke-width="2"/>
+  </svg>
+  <svg class="balloon blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100">
+    <ellipse cx="30" cy="40" rx="18" ry="28" fill="#2b4a9e" stroke="#1f3475" stroke-width="3"/>
+    <line x1="30" y1="68" x2="30" y2="100" stroke="#1f3475" stroke-width="2"/>
+  </svg>
+
+  <!-- Party hat -->
+  <svg class="party-hat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+    <polygon points="25,0 0,50 50,50" fill="#f4d03f" stroke="#e67e22" stroke-width="3"/>
+  </svg>
+
+  <!-- Confetti -->
+  <div class="confetti">
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+  </div>
+</div>
+
+<!-- Main content -->
+<div class="container">
+  <p class="lead">YOU ARE INVITED TO</p>
+  <h1>Radhika's 25th</h1>
+  <h2>Birthday Party</h2>
+
+  <div class="details">
+    <p><strong>Dinner at 7:00 PM</strong></p>
+    <p>Cafe Oro di Napoli</p>
+    <p><em>[Add date here]</em></p>
   </div>
 
-  <!-- Main content -->
-  <div class="container">
-    <p class="lead">YOU ARE INVITED TO</p>
-    <h1>Radhika's 25th</h1>
-    <h2>Birthday Party</h2>
-
-    <div class="details">
-      <p><strong>Dinner at 7:00 PM</strong></p>
-      <p>Cafe Oro di Napoli</p>
-      <p><em>[Add date here]</em></p>
-    </div>
-
-    <div class="rsvp">
-      <p>RSVP details here (optional)</p>
-    </div>
+  <div class="rsvp">
+    <p>RSVP details here (optional)</p>
   </div>
+</div>
 </body>
 </html>
+
