@@ -1,97 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Radhika's 25th Birthday Party</title>
   <style>
-    body {
-      font-family: 'Georgia', serif;
-      background-color: #fffaf6;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      color: #333;
+    :root{
+      --ink-green:#4a5d30;
+      --ink-blue:#2b4a9e;
+      --ink-brown:#6b4f2d;
+      --ink-red:#d95d5d;
+      --paper:#fffaf6;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' fill='none' stroke-width='2' opacity='0.07'%3E %3C!-- Wine Glass --%3E %3Cpath d='M80 100 q30 30 60 0 v40 a30 30 0 1 1 -60 0 z' stroke='%230047ab' fill='none'/%3E %3Cline x1='110' y1='140' x2='110' y2='190' stroke='%230047ab'/%3E %3Cline x1='90' y1='190' x2='130' y2='190' stroke='%230047ab'/%3E %3C!-- Candle --%3E %3Crect x='480' y='100' width='20' height='80' stroke='%234a5d30' fill='none'/%3E %3Cpath d='M490 70 q10 15 0 30 q-10 -15 0 -30' stroke='%23d95d5d' fill='none'/%3E %3C!-- Cake --%3E %3Cellipse cx='450' cy='500' rx='80' ry='20' stroke='%232b4a9e' fill='none'/%3E %3Crect x='370' y='460' width='160' height='40' stroke='%232b4a9e' fill='none'/%3E %3Cpath d='M390 460 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0' stroke='%232b4a9e' fill='none'/%3E %3C!-- Fork & Spoon --%3E %3Cline x1='520' y1='250' x2='520' y2='320' stroke='%236b4f2d'/%3E %3Cline x1='530' y1='250' x2='530' y2='320' stroke='%236b4f2d'/%3E %3Ccircle cx='525' cy='240' r='10' stroke='%236b4f2d' fill='none'/%3E %3Cpath d='M545 240 q15 -10 15 10 v70' stroke='%236b4f2d' fill='none'/%3E %3C!-- Plate --%3E %3Cellipse cx='120' cy='500' rx='70' ry='20' stroke='%236b4f2d' fill='none'/%3E %3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      z-index: -1;
+    *{box-sizing:border-box}
+    body{
+      font-family: Georgia, serif;
+      background: var(--paper);
+      margin:0; padding:0; color:#333; text-align:center;
+      min-height:100vh;
     }
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem;
-      background-color: rgba(255,250,246,0.95);
-      border-radius: 16px;
-      position: relative;
-      z-index: 1;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #4a5d30;
-      margin: 0.5rem 0;
-    }
-    h2 {
-      font-size: 2rem;
-      color: #d95d5d;
-      margin: 0.5rem 0 1.5rem;
-    }
-    .details {
-      font-size: 1rem;
-      color: #6b4f2d;
-      margin: 1.5rem 0;
-    }
-    .rsvp {
-      font-size: 0.95rem;
-      color: #3b5d3a;
-      margin-top: 1.5rem;
+    /* Doodles overlay with precise positions */
+    .doodles{
+      position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.12;
+      background-repeat:no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+      /* order: wine, fork&spoon, candle, cake, plate */
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160' fill='none' stroke='%230047ab' stroke-width='4'%3E%3Cpath d='M40 20 q40 30 80 0 v30 a40 40 0 1 1 -80 0 z'/%3E%3Cline x1='80' y1='50' x2='80' y2='120'/%3E%3Cline x1='60' y1='120' x2='100' y2='120'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160' fill='none' stroke='%236b4f2d' stroke-width='4'%3E%3C!-- fork --%3E%3Cline x1='40' y1='20' x2='40' y2='140'/%3E%3Cline x1='30' y1='20' x2='50' y2='20'/%3E%3Cline x1='33' y1='30' x2='47' y2='30'/%3E%3Cline x1='36' y1='40' x2='44' y2='40'/%3E%3C!-- spoon --%3E%3Ccircle cx='115' cy='35' r='18' /%3E%3Cline x1='115' y1='53' x2='115' y2='140'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160' fill='none' stroke-width='4'%3E%3Crect x='70' y='50' width='20' height='80' stroke='%234a5d30'/%3E%3Cpath d='M80 25 q10 15 0 30 q-10 -15 0 -30' stroke='%23d95d5d'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 160' fill='none' stroke='%232b4a9e' stroke-width='4'%3E%3Cellipse cx='100' cy='150' rx='90' ry='10'/%3E%3Crect x='20' y='90' width='160' height='60'/%3E%3Cpath d='M30 90 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120' fill='none' stroke='%236b4f2d' stroke-width='4'%3E%3Cellipse cx='100' cy='70' rx='90' ry='18'/%3E%3C/svg%3E");
+      background-position:
+        6% 45%,   /* wine: left middle */
+        92% 18%,  /* fork&spoon: top-right */
+        88% 8%,   /* candle: upper-right */
+        88% 90%,  /* cake: bottom-right */
+        10% 88%;  /* plate: bottom-left */
+      background-size:
+        120px, 120px, 90px, 180px, 160px;
     }
 
-    /* Mobile Friendly Adjustments */
-    @media (max-width: 600px) {
-      .container {
-        margin: 1rem;
-        padding: 1.5rem;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      h2 {
-        font-size: 1.6rem;
-      }
-      .details {
-        font-size: 0.95rem;
-      }
-      .rsvp {
-        font-size: 0.9rem;
+    .container{
+      position:relative; z-index:1;
+      max-width:640px; margin:0 auto; padding:2rem;
+      background: rgba(255,250,246,.96);
+      border-radius:16px;
+    }
+    p.lead{color:#0047ab;font-weight:bold;letter-spacing:.08em;margin:.25rem 0 .5rem}
+    h1{font-size:2.6rem;color:var(--ink-green);margin:.25rem 0}
+    h2{font-size:2rem;color:var(--ink-red);margin:0 0 1.25rem}
+    .details{font-size:1rem;color:var(--ink-brown);margin:1.25rem 0 0}
+    .details p{margin:.35rem 0}
+    .rsvp{font-size:.95rem;color:#3b5d3a;margin-top:1rem}
+
+    /* Mobile tweaks */
+    @media (max-width:600px){
+      .container{margin:1rem;padding:1.25rem}
+      h1{font-size:2.1rem}
+      h2{font-size:1.5rem}
+      .details{font-size:.95rem}
+      .doodles{
+        opacity:.10;
+        background-position:
+          3% 48%,  95% 16%,  92% 6%,  92% 94%,  8% 94%;
+        background-size:
+          88px, 88px, 64px, 120px, 110px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="doodles" aria-hidden="true"></div>
   <div class="container">
-    <p style="color:#0047ab; font-weight:bold;">YOU ARE INVITED TO</p>
+    <p class="lead">YOU ARE INVITED TO</p>
     <h1>Radhika's 25th</h1>
     <h2>Birthday Party</h2>
 
     <div class="details">
-      <p><strong>Saturday, July 14, 2025</strong></p>
-      <p>Dinner at 7PM</p>
-      <p>Café Oro di Napoli</p>
+      <p><strong>Dinner at 7:00 PM</strong></p>
+      <p>Cafe Oro di Napoli</p>
+      <p><em>[Add date here]</em></p>
     </div>
 
     <div class="rsvp">
-      <p>RSVP by June 30 to Kim</p>
-      <p>📞 +123-456-7890</p>
+      <p>RSVP details here (optional)</p>
     </div>
   </div>
 </body>
