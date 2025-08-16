@@ -12,33 +12,42 @@
       padding: 0;
       text-align: center;
       color: #333;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" fill="none" stroke-width="2" opacity="0.2"> 
-        <!-- Wine Glass (blue, left side) -->
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" fill="none" stroke-width="2" opacity="0.1"> 
+        <!-- Wine Glass -->
         <path d="M80 100 q30 30 60 0 v40 a30 30 0 1 1 -60 0 z" stroke="%230047ab" fill="none"/>
         <line x1="110" y1="140" x2="110" y2="190" stroke="%230047ab"/>
         <line x1="90" y1="190" x2="130" y2="190" stroke="%230047ab"/>
 
-        <!-- Candle (green, right side) -->
+        <!-- Candle -->
         <rect x="480" y="100" width="20" height="80" stroke="%234a5d30" fill="none"/>
         <path d="M490 70 q10 15 0 30 q-10 -15 0 -30" stroke="%23d95d5d" fill="none"/>
 
-        <!-- Cake (blue, bottom right) -->
+        <!-- Cake -->
         <ellipse cx="450" cy="500" rx="80" ry="20" stroke="%232b4a9e" fill="none"/>
         <rect x="370" y="460" width="160" height="40" stroke="%232b4a9e" fill="none"/>
         <path d="M390 460 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0 q10 -15 20 0" stroke="%232b4a9e" fill="none"/>
 
-        <!-- Fork & Spoon (brown, top right) -->
+        <!-- Fork & Spoon -->
         <line x1="520" y1="250" x2="520" y2="320" stroke="%236b4f2d"/>
         <line x1="530" y1="250" x2="530" y2="320" stroke="%236b4f2d"/>
         <circle cx="525" cy="240" r="10" stroke="%236b4f2d" fill="none"/>
         <path d="M545 240 q15 -10 15 10 v70" stroke="%236b4f2d" fill="none"/>
 
-        <!-- Plate (brown, bottom left) -->
+        <!-- Plate -->
         <ellipse cx="120" cy="500" rx="70" ry="20" stroke="%236b4f2d" fill="none"/>
       </svg>');
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
+      z-index: -1;
     }
     .container {
       max-width: 600px;
@@ -46,6 +55,8 @@
       padding: 2rem;
       background-color: rgba(255,250,246,0.95);
       border-radius: 16px;
+      position: relative;
+      z-index: 1;
     }
     h1 {
       font-size: 2.5rem;
@@ -108,3 +119,4 @@
   </div>
 </body>
 </html>
+
