@@ -1,164 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Radz's 25th Birthday</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to bottom, #ffe6eb, #fff);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
-      background-image: url('https://images.unsplash.com/photo-1551907234-44e46f8b4e9a?auto=format&fit=crop&w=1600&q=80')
-      background-size: cover;
-      background-position: center;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 40px 30px;
-      border-radius: 20px;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      text-align: center;
-      animation: fadeInUp 1.5s ease;
-    }
-
-    .card h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 60px;
-      color: #c2185b;
-      margin-bottom: 10px;
-      animation: fadeIn 2s ease;
-    }
-
-    .card h2 {
-      font-size: 24px;
-      color: #388e3c;
-      margin-bottom: 20px;
-      animation: fadeIn 2.5s ease;
-    }
-
-    .card p {
-      font-size: 18px;
-      color: #444;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      animation: fadeIn 3s ease;
-    }
-
-    .details {
-      background: #f8bbd0;
-      padding: 20px;
-      border-radius: 15px;
-      color: #880e4f;
-      font-weight: bold;
-      margin-bottom: 30px;
-      animation: slideIn 2s ease;
-    }
-
-    .rsvp a {
-      text-decoration: none;
-      background: #d81b60;
-      color: white;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: 0.3s;
-      animation: fadeIn 3.5s ease;
-    }
-
-    .rsvp a:hover {
-      background: #ad1457;
-    }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(-50px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #999;
-      animation: fadeIn 4s ease;
-    }
-
-    @media (max-width: 600px) {
-      .card h1 {
-        font-size: 48px;
-      }
-
-      .card h2 {
-        font-size: 20px;
-      }
-
-      .card p, .details {
-        font-size: 16px;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Radz's 25th Birthday Dinner</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    background: #faf7f5;
+    font-family: 'Montserrat', sans-serif;
+    color: #4a3c3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  .invite-card {
+    background: white;
+    max-width: 480px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .invite-card::before {
+    content: "";
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 150px; height: 150px;
+    background: rgba(255, 192, 203, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pulse 6s ease-in-out infinite;
+  }
+  .invite-card::after {
+    content: "";
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 180px; height: 180px;
+    background: rgba(144, 238, 144, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pulse 5s ease-in-out infinite reverse;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1);}
+    50% { transform: scale(1.1);}
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 0.2rem;
+    color: #b33951; /* deep pink-red */
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #3a5a40; /* olive green */
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #6b5b5b;
+  }
+  .details {
+    border: 1px solid #b33951;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    color: #b33951;
+  }
+  .rsvp-btn {
+    background-color: #b33951;
+    color: white;
+    border: none;
+    padding: 0.85rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  .rsvp-btn:hover {
+    background-color: #8a2b3a;
+  }
+  footer {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+  }
+</style>
 </head>
 <body>
-  <!-- Balloon container -->
-  <div class="balloon-container">
-    <div class="balloon 🎈1"></div>
-    <div class="balloon 🎈2"></div>
-    <div class="balloon 🎈3"></div>
-  </div>
-
-  <!-- Cocktail icons -->
-  <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" class="cocktail left" alt="Cocktail" />
-  <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" class="cocktail right" alt="Cocktail" />
-
-  <!-- Main card -->
   <div class="invite-card">
     <h1>Radz's 25th</h1>
-    <h2>A Night in Tuscany 🇮🇹</h2>
-    <p>You're invited to an enchanting Italian evening filled with food, wine, music, and memories as we celebrate Radz’s 25th birthday under the stars and fairy lights.</p>
-
+    <h2>A Chic Birthday Dinner</h2>
+    <p>
+      Join us for an elegant evening of fine dining and celebration as Radz turns 25.
+      Dress in your finest pinks, reds, greens, or whites and get ready for a night to remember.
+    </p>
     <div class="details">
-      📍 Venue: Trattoria al Radz (Secret Garden Lounge)<br/>
-      📅 Date: September 28, 2025<br/>
-      🕕 Time: 6:00 PM till late
+      📍 Venue: Your Venue Name Here<br />
+      📅 Date: September 28, 2025<br />
+      🕕 Time: 6:00 PM – Until late
     </div>
-
-    <div class="rsvp">
-      <a href="mailto:youremail@example.com?subject=RSVP for Radz's 25th">RSVP Now</a>
-    </div>
-
+    <a class="rsvp-btn" href="mailto:youremail@example.com?subject=RSVP for Radz's 25th">RSVP Now</a>
     <footer>
-      Dress code: Elegant Italiano 🇮🇹 | Shades of pink, red, green or white 🌸🍷
+      Designed with love & style 💖
     </footer>
   </div>
 </body>
-
 </html>
