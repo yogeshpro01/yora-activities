@@ -2,79 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Slideshow Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radz's 25th Birthday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: sans-serif;
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #ffe6f0;
+      color: #333;
+    }
+
+    .header {
+      background: url('https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      padding: 100px 20px;
       text-align: center;
-      background: #222;
-      color: #fff;
-    }
-
-    .slideshow-container {
-      position: relative;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .slide {
-      display: none;
-      width: 100%;
-    }
-
-    .slide img {
-      width: 100%;
-      height: auto;
-    }
-
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      padding: 16px;
       color: white;
-      font-weight: bold;
-      font-size: 20px;
-      user-select: none;
+      position: relative;
     }
 
-    .prev { left: 0; }
-    .next { right: 0; }
+    .header::after {
+      content: "";
+      background: rgba(255, 182, 193, 0.5);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+    }
+
+    .header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 60px;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h2 {
+      font-size: 24px;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .content p {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .details {
+      margin-top: 30px;
+      font-weight: bold;
+      color: #c2185b;
+      text-align: center;
+    }
+
+    .rsvp {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .rsvp a {
+      background: #f06292;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .rsvp a:hover {
+      background: #ec407a;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <h1>Image Slideshow</h1>
 
-  <div class="slideshow-container">
-    <div class="slide"><img src="img1.jpg" alt="Slide 1"></div>
-    <div class="slide"><img src="img2.jpg" alt="Slide 2"></div>
-    <div class="slide"><img src="img3.jpg" alt="Slide 3"></div>
-
-    <a class="prev" onclick="plusSlides(-1)">❮</a>
-    <a class="next" onclick="plusSlides(1)">❯</a>
+  <div class="header">
+    <h1>You're Invited!</h1>
+    <h2>Radz is turning 25 🎉</h2>
   </div>
 
-  <script>
-    let slideIndex = 0;
-    showSlides();
+  <div class="content">
+    <p>Join us in celebrating Radz's 25th birthday with laughter, love, and lots of pink!</p>
 
-    function plusSlides(n) {
-      slideIndex += n;
-      showSlides();
-    }
+    <div class="details">
+      📍 Location: [Your Venue Here]<br>
+      📅 Date: [Insert Date Here]<br>
+      🕒 Time: [Insert Time Here]
+    </div>
 
-    function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex = (slideIndex + slides.length) % slides.length;
-      slides[slideIndex].style.display = "block";
-    }
+    <div class="rsvp">
+      <a href="mailto:youremail@example.com?subject=RSVP for Radz's Birthday">RSVP Now</a>
+    </div>
+  </div>
 
-    // Auto advance slides
-    setInterval(() => plusSlides(1), 3000);
-  </script>
+  <footer>
+    Made with 💖 for Radz's 25th
+  </footer>
+
 </body>
 </html>
