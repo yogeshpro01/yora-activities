@@ -14,6 +14,8 @@
             --dark: #5A2A40;
             --light: #FFF9FB;
             --gold: #FFD700;
+            --wine-red: #722F37;
+            --wine-glass: #E8F0FE;
         }
         
         body {
@@ -32,13 +34,12 @@
         
         .decoration {
             position: fixed;
-            z-index: 0; /* Ensures decorations stay in background */
+            z-index: 0;
             pointer-events: none;
             animation: float 8s ease-in-out infinite;
-            opacity: 0.25; /* Semi-transparent background elements */
+            opacity: 0.35;
         }
         
-        /* Balloon styles with size variations */
         .balloon {
             border-radius: 50%;
             background: var(--primary);
@@ -55,30 +56,37 @@
             background: rgba(90, 42, 64, 0.3);
         }
         
-        /* Cake decoration styles */
+        /* Cake Styles */
         .cake-body {
             background: var(--accent);
             border-radius: 8px;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .cake-top {
             position: absolute;
             background: var(--primary);
             border-radius: 8px 8px 0 0;
+            top: 0;
+            left: 10%;
+            width: 80%;
         }
         
         .cake-age {
             position: absolute;
-            text-align: center;
             color: var(--dark);
             font-weight: bold;
             font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            width: 100%;
         }
         
         .cake-candle {
             position: absolute;
-            top: -35px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--secondary);
@@ -86,7 +94,7 @@
         
         .cake-flame {
             position: absolute;
-            top: -40px;
+            top: -30px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--gold);
@@ -94,9 +102,66 @@
             animation: flicker 2s ease-in-out infinite alternate;
         }
         
+        /* Wine Bottle */
+        .wine-bottle {
+            background: var(--wine-red);
+            position: relative;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .wine-bottle::before {
+            content: "";
+            position: absolute;
+            top: -12px;
+            left: 25%;
+            width: 50%;
+            height: 12px;
+            background: #2C0703;
+            border-radius: 2px;
+        }
+        
+        .wine-bottle::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            width: 40%;
+            height: 5px;
+            background: #2C0703;
+        }
+        
+        /* Wine Glass */
+        .wine-glass {
+            position: relative;
+            background: var(--wine-glass);
+            border-radius: 30% 30% 0 0;
+            overflow: hidden;
+        }
+        
+        .wine-glass::before {
+            content: "";
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            width: 80%;
+            height: 70%;
+            background: var(--wine-red);
+            border-radius: 40% 40% 0 0;
+        }
+        
+        .wine-glass::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 40%;
+            width: 20%;
+            height: 30%;
+            background: #D3D3D3;
+        }
+        
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(var(--rotate)); }
-            50% { transform: translateY(-40px) rotate(calc(var(--rotate) + 5deg)); }
+            50% { transform: translateY(-30px) rotate(calc(var(--rotate) + 5deg)); }
         }
         
         @keyframes flicker {
@@ -113,16 +178,14 @@
             padding: 2rem;
             text-align: center;
             position: relative;
-            z-index: 100; /* Above decorations */
+            z-index: 100;
             border: 3px solid var(--accent);
             margin: 20px;
+            transform: translateX(0); /* Ensure centered */
         }
-        
-        /* ... (other text styles remain the same) ... */
     </style>
 </head>
 <body>
-    <!-- Decorations will be added by JavaScript -->
     <div class="invitation">
         <h1>YOU ARE INVITED TO THE</h1>
         <h2>DINNER</h2>
@@ -137,137 +200,89 @@
     </div>
 
     <script>
-        // Safe zones where decorations can appear (outside invitation area)
-        const safeZones = [
-            { x1: 0, x2: 30, y1: 0, y2: 30 },    // Top-left
-            { x1: 70, x2: 100, y1: 0, y2: 30 },  // Top-right
-            { x1: 0, x2: 30, y1: 70, y2: 100 },  // Bottom-left
-            { x1: 70, x2: 100, y1: 70, y2: 100 },// Bottom-right
-            { x1: 0, x2: 20, y1: 30, y2: 70 },   // Left side
-            { x1: 80, x2: 100, y1: 30, y2: 70 }  // Right side
+        // Decorations with better visible wine bottles/glasses
+        const positions = [
+            // Top left quadrant
+            { type: 'balloon', left: '5%', top: '5%', width: 70, height: 90 },
+            { type: 'cake', left: '15%', top: '10%', width: 60, height: 45 },
+            
+            // Top right quadrant
+            { type: 'wine-bottle', left: '85%', top: '5%', width: 30, height: 80 },
+            { type: 'wine-glass', left: '75%', top: '10%', width: 40, height: 60 },
+            
+            // Middle left
+            { type: 'cake', left: '5%', top: '50%', width: 65, height: 50 },
+            
+            // Middle right
+            { type: 'wine-bottle', left: '95%', top: '50%', width: 35, height: 90 },
+            
+            // Bottom left quadrant
+            { type: 'balloon', left: '10%', top: '85%', width: 80, height: 100 },
+            
+            // Bottom right quadrant
+            { type: 'wine-glass', left: '90%', top: '85%', width: 45, height: 70 },
+            { type: 'cake', left: '80%', top: '80%', width: 60, height: 45 }
         ];
 
-        // Check if position is valid (not overlapping)
-        function isValidPosition(x, y, width, height, existingDecors) {
-            // Check if in safe zone
-            const inSafeZone = safeZones.some(zone => 
-                x >= zone.x1 && 
-                x + width <= zone.x2 &&
-                y >= zone.y1 && 
-                y + height <= zone.y2
-            );
-            if (!inSafeZone) return false;
-
-            // Check overlap with other decorations (with 20px buffer)
-            for (const decor of existingDecors) {
-                const decorX = parseFloat(decor.style.left);
-                const decorY = parseFloat(decor.style.top);
-                const decorW = decor.offsetWidth;
-                const decorH = decor.offsetHeight;
-
-                if (!(x + width + 20 < decorX || 
-                      x > decorX + decorW + 20 || 
-                      y + height + 20 < decorY || 
-                      y > decorY + decorH + 20)) {
-                    return false;
-                }
+        function createDecoration(pos) {
+            const decor = document.createElement('div');
+            decor.className = `decoration ${pos.type}`;
+            
+            const rotation = pos.type === 'wine-glass' || pos.type === 'wine-bottle' 
+                ? 0 
+                : Math.floor(Math.random() * 30) - 15;
+                
+            decor.style.setProperty('--rotate', `${rotation}deg`);
+            
+            decor.style.left = pos.left;
+            decor.style.top = pos.top;
+            decor.style.width = `${pos.width}px`;
+            decor.style.height = `${pos.height}px`;
+            decor.style.animationDelay = `${Math.random() * 5}s`;
+            
+            if (pos.type === 'balloon') {
+                decor.style.borderRadius = Math.random() > 0.5 ? '60% 60% 50% 50%' : '50%';
+                decor.style.backgroundColor = `hsl(${340 + Math.floor(Math.random() * 20)}, 100%, 70%)`;
+            } 
+            else if (pos.type === 'cake') {
+                decor.innerHTML = `
+                    <div class="cake-body" style="width:100%; height:${pos.height}px;">
+                        <div class="cake-top" style="height:${pos.height * 0.25}px;"></div>
+                        <div class="cake-age" style="font-size:${pos.width * 0.2}px;">25</div>
+                        <div class="cake-candle" style="width:${pos.width * 0.08}px; height:${pos.height * 0.4}px;"></div>
+                        <div class="cake-flame" style="width:${pos.width * 0.12}px; height:${pos.width * 0.12}px;"></div>
+                    </div>
+                `;
             }
-            return true;
+            else if (pos.type === 'wine-bottle') {
+                decor.style.backgroundColor = 'var(--wine-red)';
+            }
+            else if (pos.type === 'wine-glass') {
+                // Wine glass is created through CSS pseudo-elements
+            }
+            
+            document.body.appendChild(decor);
         }
 
-        // Generate random decoration
-        function createDecoration(type, existingDecors) {
-            const attempts = 50;
-            for (let i = 0; i < attempts; i++) {
-                // Random size variations
-                let width, height;
-                if (type === 'balloon') {
-                    const sizeVar = 0.7 + Math.random() * 0.6; // 70-130% of base size
-                    width = 100 * sizeVar;
-                    height = 120 * sizeVar;
-                } else { // cake
-                    const sizeVar = 0.8 + Math.random() * 0.4; // 80-120% of base size
-                    width = 80 * sizeVar;
-                    height = 60 * sizeVar;
-                }
-
-                // Convert to viewport percentages
-                const widthPercent = (width / window.innerWidth) * 100;
-                const heightPercent = (height / window.innerHeight) * 100;
-
-                // Try random positions
-                const zone = safeZones[Math.floor(Math.random() * safeZones.length)];
-                const x = zone.x1 + Math.random() * (zone.x2 - zone.x1 - widthPercent);
-                const y = zone.y1 + Math.random() * (zone.y2 - zone.y1 - heightPercent);
-
-                if (isValidPosition(x, y, widthPercent, heightPercent, existingDecors)) {
-                    const decor = document.createElement('div');
-                    decor.className = `decoration ${type}`;
-                    
-                    // Random rotation (-15 to 15 degrees)
-                    const rotation = Math.floor(Math.random() * 30) - 15;
-                    decor.style.setProperty('--rotate', `${rotation}deg`);
-                    
-                    // Position and size
-                    decor.style.left = `${x}%`;
-                    decor.style.top = `${y}%`;
-                    decor.style.width = `${width}px`;
-                    decor.style.height = `${height}px`;
-                    decor.style.animationDelay = `${Math.random() * 5}s`;
-                    
-                    if (type === 'balloon') {
-                        // Random balloon color variation
-                        const hue = 340 + Math.floor(Math.random() * 20); // Pink variations
-                        decor.style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
-                        decor.style.borderRadius = Math.random() > 0.5 ? '60% 60% 50% 50%' : '50%';
-                    } else { // cake
-                        decor.innerHTML = `
-                            <div class="cake-body" style="
-                                width:100%; height:${height*0.6}px; 
-                                border-radius:${width*0.08}px;
-                            ">
-                                <div class="cake-top" style="
-                                    top:-${height*0.25}px; left:${width*0.1}px;
-                                    width:${width*0.8}px; height:${height*0.25}px;
-                                    border-radius:${width*0.08}px ${width*0.08}px 0 0;
-                                "></div>
-                                <div class="cake-age" style="
-                                    top:${height*0.15}px; font-size:${width*0.14}px;
-                                ">25</div>
-                                <div class="cake-candle" style="
-                                    width:${width*0.08}px; height:${height*0.4}px;
-                                "></div>
-                                <div class="cake-flame" style="
-                                    width:${width*0.12}px; height:${width*0.12}px;
-                                "></div>
-                            </div>
-                        `;
-                    }
-                    
-                    document.body.appendChild(decor);
-                    return decor;
-                }
-            }
-            return null; // Couldn't find valid position
-        }
-
-        // Create decorations when loaded
+        // Create all decorations
         window.addEventListener('load', function() {
-            const decorations = [];
+            positions.forEach(pos => createDecoration(pos));
             
-            // Create 6-8 balloons
-            const balloonCount = 6 + Math.floor(Math.random() * 3);
-            for (let i = 0; i < balloonCount; i++) {
-                const balloon = createDecoration('balloon', decorations);
-                if (balloon) decorations.push(balloon);
-            }
+            // Ensure invitation is centered
+            const invitation = document.querySelector('.invitation');
+            invitation.style.left = '50%';
+            invitation.style.transform = 'translateX(-50%)';
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            document.querySelectorAll('.decoration').forEach(el => el.remove());
+            positions.forEach(pos => createDecoration(pos));
             
-            // Create 8-10 cakes
-            const cakeCount = 8 + Math.floor(Math.random() * 3);
-            for (let i = 0; i < cakeCount; i++) {
-                const cake = createDecoration('cake', decorations);
-                if (cake) decorations.push(cake);
-            }
+            // Re-center invitation
+            const invitation = document.querySelector('.invitation');
+            invitation.style.left = '50%';
+            invitation.style.transform = 'translateX(-50%)';
         });
     </script>
 </body>
