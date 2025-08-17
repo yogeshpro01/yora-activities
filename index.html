@@ -1,152 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Radhika's 25th Birthday Party</title>
-<style>
-:root{
-  --green:#4a5d30; --blue:#2b4a9e; --brown:#6b4f2d; --red:#d95d5d;
-  --paper:#fffaf6;
-}
-*{box-sizing:border-box;}
-body{
-  font-family: Georgia, serif;
-  background: var(--paper);
-  margin:0; padding:0; color:#333; text-align:center;
-  min-height:100vh; overflow-x:hidden;
-}
-
-/* Invitation container */
-.container{
-  position:relative; z-index:1;
-  max-width:640px; margin:0 auto; padding:2rem;
-  background: rgba(255,250,246,.96);
-  border-radius:16px;
-}
-p.lead{color:#0047ab;font-weight:bold;letter-spacing:.08em;margin:.25rem 0 .5rem;}
-h1{font-size:2.6rem;color:var(--green);margin:.25rem 0;}
-h2{font-size:2rem;color:var(--red);margin:0 0 1.25rem;}
-.details{font-size:1rem;color:var(--brown);margin:1.25rem 0 0;}
-.details p{margin:.35rem 0;}
-.rsvp{font-size:.95rem;color:#3b5d3a;margin-top:1rem;}
-
-/* Mobile tweaks */
-@media (max-width:600px){
-  .container{margin:1rem;padding:1.25rem;}
-  h1{font-size:2.1rem;} h2{font-size:1.5rem;} .details{font-size:.95rem;}
-}
-
-/* --- Hand-drawn Doodles --- */
-.doodles{position:fixed; inset:0; pointer-events:none; z-index:0;}
-
-/* Base styles for SVG doodles */
-.doodles svg{position:absolute; transform-origin:center;}
-
-/* Floating animations */
-@keyframes float {0%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-15px) rotate(3deg);}100%{transform:translateY(0) rotate(-3deg);}}
-@keyframes sway {0%{transform:rotate(0deg);}50%{transform:rotate(8deg);}100%{transform:rotate(0deg);}}
-@keyframes flicker {0%{opacity:0.7;}50%{opacity:1;}100%{opacity:0.7;}}
-@keyframes confetti-fall {0%{top:-10%;}100%{top:100%;}}
-
-/* Doodle positions */
-.cake { right:10%; bottom:5%; width:140px; height:100px; animation: float 5s ease-in-out infinite alternate;}
-.wine { left:5%; bottom:15%; width:60px; height:120px; animation: float 4s ease-in-out infinite alternate;}
-.cutlery { right:5%; bottom:25%; width:80px; height:120px; animation: sway 4s ease-in-out infinite alternate;}
-.balloon.red { left:20%; top:10%; width:60px; height:100px; animation: float 4s ease-in-out infinite alternate;}
-.balloon.blue { left:35%; top:15%; width:60px; height:100px; animation: float 5s ease-in-out infinite alternate;}
-.party-hat { left:50%; top:0; width:50px; height:50px; animation: float 6s ease-in-out infinite alternate;}
-
-/* Confetti styles */
-.confetti-piece{
-  position:absolute; width:8px; height:8px; border-radius:50%;
-  animation: confetti-fall linear infinite;
-}
-.confetti-piece:nth-child(1){background:#d95d5d; left:10%; animation-duration:3s;}
-.confetti-piece:nth-child(2){background:#2b4a9e; left:30%; animation-duration:4s;}
-.confetti-piece:nth-child(3){background:#4a5d30; left:50%; animation-duration:5s;}
-.confetti-piece:nth-child(4){background:#f4d03f; left:70%; animation-duration:3.5s;}
-.confetti-piece:nth-child(5){background:#e67e22; left:85%; animation-duration:4.5s;}
-
-/* Mobile scaling */
-@media (max-width:600px){
-  .cake, .wine, .cutlery, .balloon, .party-hat{transform:scale(0.7);}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radhika's 25th Birthday Dinner Party</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #292F36;
+            --light: #F7FFF7;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(78, 205, 196, 0.1) 0%, transparent 20%);
+            animation: bgPulse 15s infinite alternate;
+        }
+        
+        @keyframes bgPulse {
+            0% { background-color: #F7FFF7; }
+            50% { background-color: #f0f9f8; }
+            100% { background-color: #fff7f7; }
+        }
+        
+        .invitation {
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+            border: 5px solid var(--accent);
+        }
+        
+        .invitation::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 1rem 0;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            font-size: 4rem;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+            animation: bounce 1s;
+        }
+        
+        h3 {
+            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        .date {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 1.5rem 0;
+            animation: slideIn 1s ease-out;
+        }
+        
+        .time {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 1.5rem 0;
+            animation: slideIn 1.2s ease-out;
+        }
+        
+        .address {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            color: var(--dark);
+            animation: fadeIn 2s ease-in;
+        }
+        
+        .rsvp {
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            animation: pulse 2s infinite;
+        }
+        
+        .contact {
+            font-size: 1.2rem;
+            color: var(--dark);
+            animation: fadeIn 2.5s ease-in;
+        }
+        
+        .decoration {
+            position: absolute;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            animation: confettiFall 5s linear infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-30px);}
+            60% {transform: translateY(-15px);}
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .cake-svg {
+            width: 80px;
+            margin: 0 auto;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 3rem; }
+            h3 { font-size: 1.5rem; }
+            .date, .time { font-size: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
-
-<!-- Animated Doodles -->
-<div class="doodles" aria-hidden="true">
-
-  <!-- Cake with hand-drawn style & flickering candle -->
-  <svg class="cake" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 100">
-    <path d="M10 45 Q70 5 130 45 L130 85 Q70 95 10 85 Z" fill="#fff0f0" stroke="#d95d5d" stroke-width="3"/>
-    <line x1="70" y1="10" x2="70" y2="40" stroke="#d95d5d" stroke-width="3" style="animation:flicker 1s infinite alternate"/>
-    <circle cx="70" cy="10" r="3" fill="#f4d03f"/>
-  </svg>
-
-  <!-- Wine glass with curved hand-drawn lines -->
-  <svg class="wine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 120">
-    <path d="M30 20 Q45 50 30 60 Q15 50 30 20 Z" fill="none" stroke="#2b4a9e" stroke-width="3" stroke-linecap="round"/>
-    <line x1="30" y1="60" x2="30" y2="100" stroke="#2b4a9e" stroke-width="3"/>
-    <ellipse cx="30" cy="105" rx="8" ry="3" fill="#2b4a9e"/>
-  </svg>
-
-  <!-- Fork & Knife with sketchy lines -->
-  <svg class="cutlery" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 120">
-    <!-- Fork -->
-    <line x1="22" y1="20" x2="22" y2="70" stroke="#6b4f2d" stroke-width="3"/>
-    <line x1="16" y1="20" x2="16" y2="50" stroke="#6b4f2d" stroke-width="2"/>
-    <line x1="28" y1="20" x2="28" y2="50" stroke="#6b4f2d" stroke-width="2"/>
-    <!-- Knife -->
-    <path d="M60 20 Q65 35 60 50" stroke="#6b4f2d" stroke-width="3" fill="none"/>
-    <line x1="60" y1="50" x2="60" y2="80" stroke="#6b4f2d" stroke-width="3"/>
-  </svg>
-
-  <!-- Balloons with irregular shapes -->
-  <svg class="balloon red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100">
-    <path d="M30 40 Q50 60 30 80 Q10 60 30 40 Z" fill="#d95d5d" stroke="#b33a3a" stroke-width="2"/>
-    <line x1="30" y1="80" x2="30" y2="100" stroke="#b33a3a" stroke-width="2"/>
-  </svg>
-
-  <svg class="balloon blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100">
-    <path d="M30 40 Q48 58 30 78 Q12 58 30 40 Z" fill="#2b4a9e" stroke="#1f3475" stroke-width="2"/>
-    <line x1="30" y1="78" x2="30" y2="100" stroke="#1f3475" stroke-width="2"/>
-  </svg>
-
-  <!-- Party hat with skewed, playful triangle -->
-  <svg class="party-hat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-    <path d="M25 0 L5 50 L45 50 Z" fill="#f4d03f" stroke="#e67e22" stroke-width="3"/>
-  </svg>
-
-  <!-- Confetti -->
-  <div class="confetti">
-    <div class="confetti-piece"></div>
-    <div class="confetti-piece"></div>
-    <div class="confetti-piece"></div>
-    <div class="confetti-piece"></div>
-    <div class="confetti-piece"></div>
-  </div>
-</div>
-
-
-<!-- Main content -->
-<div class="container">
-  <p class="lead">YOU ARE INVITED TO</p>
-  <h1>Radhika's 25th</h1>
-  <h2>Birthday Party</h2>
-
-  <div class="details">
-    <p><strong>Dinner at 7:00 PM</strong></p>
-    <p>Cafe Oro di Napoli</p>
-    <p><em>[Add date here]</em></p>
-  </div>
-
-  <div class="rsvp">
-    <p>RSVP details here (optional)</p>
-  </div>
-</div>
+    <div class="invitation">
+        <!-- Animated SVG Cake -->
+        <svg class="cake-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path fill="#FF6B6B" d="M50,20 L80,50 L20,50 Z"/>
+            <rect x="35" y="50" width="30" height="20" fill="#4ECDC4"/>
+            <rect x="30" y="70" width="40" height="10" fill="#FFE66D"/>
+            <circle cx="50" cy="30" r="5" fill="#FFE66D" id="candle-flame">
+                <animate attributeName="r" values="5;6;5" dur="1s" repeatCount="indefinite"/>
+                <animate attributeName="cy" values="30;29;30" dur="1s" repeatCount="indefinite"/>
+            </circle>
+        </svg>
+        
+        <h1>YOU ARE INVITED TO THE</h1>
+        <h2>DINNER</h2>
+        <h3>PARTY</h3>
+        
+        <div class="date">SATURDAY, JULY 14, 2025</div>
+        <div class="time">7PM - 9PM</div>
+        <div class="address">123 ANYWHERE ST., ANY CITY</div>
+        
+        <div class="rsvp">RSVP BY JUNE 30 TO RADHIKA</div>
+        <div class="contact">+123-456-7890</div>
+    </div>
+    
+    <script>
+        // Create confetti elements
+        function createConfetti() {
+            const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#292F36'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                document.body.appendChild(confetti);
+            }
+        }
+        
+        // Initialize on load
+        window.onload = function() {
+            createConfetti();
+        };
+    </script>
 </body>
 </html>
-
